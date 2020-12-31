@@ -7,6 +7,137 @@ About Us |
 
 {% block style1 %}
 <link rel="stylesheet" type="text/css" href="{% static '/stynew.css' %}">
+<script type="text/javascript">
+
+  function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+
+function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Show more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Show less"; 
+    moreText.style.display = "inline";
+  }
+}
+  
+var ButtonExpand = function (domNode) {
+
+  this.domNode = domNode;
+
+  this.keyCode = Object.freeze({
+    'RETURN': 13
+  });
+};
+
+ButtonExpand.prototype.init = function () {
+
+  this.controlledNode = false;
+
+  var id = this.domNode.getAttribute('aria-controls');
+
+  if (id) {
+    this.controlledNode = document.getElementById(id);
+  }
+
+  this.domNode.setAttribute('aria-expanded', 'false');
+  this.hideContent();
+
+  this.domNode.addEventListener('keydown',    this.handleKeydown.bind(this));
+  this.domNode.addEventListener('click',      this.handleClick.bind(this));
+  this.domNode.addEventListener('focus',      this.handleFocus.bind(this));
+  this.domNode.addEventListener('blur',       this.handleBlur.bind(this));
+
+};
+
+ButtonExpand.prototype.showContent = function () {
+
+  if (this.controlledNode) {
+    this.controlledNode.style.display = 'block';
+  }
+
+};
+
+ButtonExpand.prototype.hideContent = function () {
+
+  if (this.controlledNode) {
+    this.controlledNode.style.display = 'none';
+  }
+
+};
+
+ButtonExpand.prototype.toggleExpand = function () {
+
+  if (this.domNode.getAttribute('aria-expanded') === 'true') {
+    this.domNode.setAttribute('aria-expanded', 'false');
+    this.hideContent();
+  }
+  else {
+    this.domNode.setAttribute('aria-expanded', 'true');
+    this.showContent();
+  }
+
+};
+
+/* EVENT HANDLERS */
+
+ButtonExpand.prototype.handleKeydown = function (event) {
+
+  console.log('[keydown]');
+
+  switch (event.keyCode) {
+
+    case this.keyCode.RETURN:
+
+      this.toggleExpand();
+
+      event.stopPropagation();
+      event.preventDefault();
+      break;
+
+    default:
+      break;
+  }
+
+};
+
+ButtonExpand.prototype.handleClick = function (event) {
+  this.toggleExpand();
+};
+
+ButtonExpand.prototype.handleFocus = function (event) {
+  this.domNode.classList.add('focus');
+};
+
+ButtonExpand.prototype.handleBlur = function (event) {
+  this.domNode.classList.remove('focus');
+};
+
+/* Initialize Hide/Show Buttons */
+
+window.addEventListener('load', function (event) {
+
+  var buttons =  document.querySelectorAll('button[aria-expanded][aria-controls]');
+
+  for (var i = 0; i < buttons.length; i++) {
+    var be = new ButtonExpand(buttons[i]);
+    be.init();
+  }
+
+}, false);
+</script>
  <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -88,7 +219,6 @@ About Us |
 				</ol>
 			</div>			
 	</div>
-
 
 
 	<div class="best-features">
@@ -204,6 +334,146 @@ About Us |
                     </div>
 
     </div>
+<br><br>
+
+
+<div class="container my-2 py-2">
+  <h2><u>Frequently asked Questions!</u></h2>
+
+  <dl class="faq">
+  	<dt>
+      <button aria-expanded="false" aria-controls="faq1_desc">
+        &#8226 Why Choose Us?
+      </button>
+    </dt>
+    <dd>
+      <p id="faq1_desc" class="desc">
+        
+            A General Physician is a medical specialist who diagnoses common illnesses (such as common cold, flu, and Bronchitis) and gives treatment and advice accordingly. Chat with a general physician today on DMEZ Healthcare to clear your doubts about any health problems.
+          
+      </p>
+    </dd>
+    <dt>
+      <button aria-expanded="false" aria-controls="faq2_desc">
+        &#8226 What facilities we give to our customer?
+      </button>
+    </dt>
+    <dd>
+      <p id="faq2_desc" class="desc">
+        
+            A General Physician is a medical specialist who diagnoses common illnesses (such as common cold, flu, and Bronchitis) and gives treatment and advice accordingly. Chat with a general physician today on DMEZ Healthcare to clear your doubts about any health problems.
+          
+      </p>
+    </dd>
+    <dt>
+      <button aria-expanded="false" aria-controls="faq3_desc">
+        &#8226 Why products are cheap here?
+      </button>
+    </dt>
+    <dd>
+      <p id="faq3_desc" class="desc">
+        
+            A General Physician is a medical specialist who diagnoses common illnesses (such as common cold, flu, and Bronchitis) and gives treatment and advice accordingly. Chat with a general physician today on DMEZ Healthcare to clear your doubts about any health problems.
+          
+      </p>
+    </dd>
+    <dt>
+      <button aria-expanded="false" aria-controls="faq4_desc">
+        &#8226 What type of product you can find here?
+      </button>
+    </dt>
+    <dd>
+      <p id="faq4_desc" class="desc">
+        
+            A General Physician is a medical specialist who diagnoses common illnesses (such as common cold, flu, and Bronchitis) and gives treatment and advice accordingly. Chat with a general physician today on DMEZ Healthcare to clear your doubts about any health problems.
+          
+      </p>
+    </dd>
+    <dt>
+      <button aria-expanded="false" aria-controls="faq5_desc">
+        &#8226 Who is a General Physician?
+      </button>
+    </dt>
+    <dd>
+      <p id="faq5_desc" class="desc">
+        
+            A General Physician is a medical specialist who diagnoses common illnesses (such as common cold, flu, and Bronchitis) and gives treatment and advice accordingly. Chat with a general physician today on DMEZ Healthcare to clear your doubts about any health problems.
+          
+      </p>
+    </dd>
+    <dt>
+      <button aria-expanded="false" aria-controls="faq6_desc">
+        &#8226 What are the common symptoms for which I can consult a General Physician online?
+      </button>
+    </dt>
+    <dd>
+      <p id="faq6_desc" class="desc">
+        Fever, abdominal pain, eye infection, cold and cough are some of the issues that one could get treated by a General Physician. If you are experiencing any of these symptoms you must connect with a doctor at the earliest. You can use the online doctor consultation feature of DMEZ Healthcare.
+          
+      </p>
+    </dd>
+    <dt>
+      <button aria-expanded="false" aria-controls="faq7_desc">
+       &#8226 I am not facing any health issues? Can I talk to a doctor online for a general health query?
+      </button>
+    </dt>
+    <dd>
+      <p id="faq7_desc" class="desc">
+        
+            Yes! It is, in fact, advisable to get routine health check-ups done. By getting these check-ups, screenings, and treatments done regularly, you are taking steps towards a longer and healthier life. So chat with an online doctor anytime on DMEZ Healthcare.
+      </p>
+    </dd>
+    <dt>
+      <button aria-expanded="false" aria-controls="faq8_desc">
+       &#8226  Is there a time limit for my consultation? Does the doctor provide sufficient time to understand my health problem?
+      </button>
+    </dt>
+    <dd>
+      <p id="faq8_desc" class="desc">
+        
+           Our online doctors are trained to provide you with sufficient time so that they can understand your problems in detail and then provide you with a personalised treatment plan. Don't worry, all your health-related queries will be heard patiently and our doctors will provide you with sufficient time.
+          
+      </p>
+    </dd>
+    <dt>
+      <button aria-expanded="false" aria-controls="faq6_desc">
+        &#8226 What are the common symptoms for which I can consult a General Physician online?
+      </button>
+    </dt>
+    <dd>
+      <p id="faq6_desc" class="desc">
+        Fever, abdominal pain, eye infection, cold and cough are some of the issues that one could get treated by a General Physician. If you are experiencing any of these symptoms you must connect with a doctor at the earliest. You can use the online doctor consultation feature of DMEZ Healthcare.
+          
+      </p>
+    </dd>
+    <dt>
+      <button aria-expanded="false" aria-controls="faq7_desc">
+       &#8226 I am not facing any health issues? Can I talk to a doctor online for a general health query?
+      </button>
+    </dt>
+    <dd>
+      <p id="faq7_desc" class="desc">
+        
+            Yes! It is, in fact, advisable to get routine health check-ups done. By getting these check-ups, screenings, and treatments done regularly, you are taking steps towards a longer and healthier life. So chat with an online doctor anytime on DMEZ Healthcare.
+      </p>
+    </dd>
+    <dt>
+      <button aria-expanded="false" aria-controls="faq8_desc">
+       &#8226  Is there a time limit for my consultation? Does the doctor provide sufficient time to understand my health problem?
+      </button>
+    </dt>
+    <dd>
+      <p id="faq8_desc" class="desc">
+        
+           Our online doctors are trained to provide you with sufficient time so that they can understand your problems in detail and then provide you with a personalised treatment plan. Don't worry, all your health-related queries will be heard patiently and our doctors will provide you with sufficient time.
+          
+      </p>
+    </dd>
+  </dl>
+  
+</div>
+
+
 
 <br><br>
 <h1><center>Field 1</center></h1>
