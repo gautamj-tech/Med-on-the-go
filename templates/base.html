@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title>{% block title %}{% endblock title %} | DMEZ - Healthcare | Online Medecines</title>
+	{% block style1 %}{% endblock style1 %} 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+
+		<script type="text/javascript">
+		var user = '{{request.user}}'
+
+		function getToken(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken')
+
+		function getCookie(name) {
+		    // Split cookie string and get all individual name=value pairs in an array
+		    var cookieArr = document.cookie.split(";");
+
+		    // Loop through the array elements
+		    for(var i = 0; i < cookieArr.length; i++) {
+		        var cookiePair = cookieArr[i].split("=");
+
+		        /* Removing whitespace at the beginning of the cookie name
+		        and compare it with the given string */
+		        if(name == cookiePair[0].trim()) {
+		            // Decode the cookie value and return
+		            return decodeURIComponent(cookiePair[1]);
+		        }
+		    }
+
+		    // Return null if not found
+		    return null;
+		}
+		var cart = JSON.parse(getCookie('cart'))
+
+		if (cart == undefined){
+			cart = {}
+			console.log('Cart Created!', cart)
+			document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+		}
+		console.log('Cart:', cart)
+	
+	</script>
+	<style>
+		@media only screen and (max-width: 980px){
+	.top-nav-bar{
+		height: 118px;
+		border-bottom: 0;
+
+	}
+	.search-box{
+		width: 100%;
+	}
+	.menu-bar{
+		width: 100%;
+	}
+	.menu-bar ul{
+	    text-align: -webkit-center;
+		margin: 10px 0;
+		width:100%;
+	}
+	.menu-bar ul li{
+		height:87px;
+		width: auto;
+		padding: 15px 52px;
+
+	}
+.slider {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 160px;
+}
+}
+	</style>
+
+</head>
+<body>
+
+</nav>
+<div class="top-nav-bar">
+		<div class="search-box">
+			<i class="fa fa-bars" id="menu-btn" onclick="openmenu()"></i>
+			<i class="fa fa-times" id="close-btn" onclick="closemenu()"></i>
+			<form method='get' action='/search' class="form-inline my-2 my-lg-0 ">
+
+			<a href="/"><img src="{% static '/img/logo.jpg' %}" class="logo" width="55px" height="50px"></a>
+			    <input class="form-control mx-2 my-2 mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+      <button class="btn btn-success mx-2 my-2 mr-sm-2" type="submit" id="searchbtn">	      	<i class="fa fa-search"></i></button>
+				 <a class="btn btn-danger my-2 mr-sm-2 " href="/upload" style="color: #fff"><i class="fa fa-upload" aria-hidden="true"></i> Prescription</a>
+
+    </form>
+		</div>
+		<div class="menu-bar">
+			<ul>
+				
+				{% if user.is_authenticated %}
+				<li>
+					<a href="/logout" style="color: #fff"><i class="fa fa-user"></i>Hi {{request.user}}, Logout</a>
+					</form>
+				</li>
+				{% else %}
+					<a href="/account" style="color: #fff"><li><i class="fa fa-user"></i>Login</li></a>
+				{% endif %}
+				<a href="/cart"  style="color: #fff"><li><i class="fa fa-shopping-basket"></i>Cart({{cartItems}})</li></a>
+
+			</ul>
+		</div>		
+</div>
+<section class="header">
+	<div class="side-menu" id="side-menu">
+	    <ul>
+		    {% if user.is_authenticated %}
+		    	<li>Hi, {{user}}</li>
+		    	<a href="/top"><li>On Sale<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/about"><li>About Us<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/store"><li>All Products<i class="fa fa-angle-right"></i></a></li>     
+		        <a href="/testing"><li>Covid Testing<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/bestselling"><li>Best Selling<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/top"><li>Ayurvedic Products<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/specific"><li>Organic Foods<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/consult"><li>Consult With Doctor<i class="fa fa-angle-right"></i></a></li>
+                        <a href="/comingsoon"><li>Contact Us<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/comingsoon"><li>Contact Us<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/join"><li>Join Us<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/wallet"><li>Wallet<i class="fa fa-angle-right"></i></a></li>
+			<a href="/tracker"><li>Track your order<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/logout"><li>Logout<i class="fa fa-angle-right"></i></a></li>
+			<a href="/bot"><li>Talk to MAB?<i class="fa fa-angle-right"></i></a></li>
+			<a href="/customerservice" ><li>Help?<i class="fa fa-angle-right"></i></a></li>
+
+		    {% else %}
+		    	<a href="/top"><li>On Sale<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/about"><li>About Us<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/store"><li>All Products<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/specific"><li>Body Care<i class="fa fa-angle-right"></i></a></li>      
+		        <a href="/testing"><li>Covid Testing<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/bestselling"><li>Best Selling<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/top"><li>Ayurvedic Products<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/specific"><li>Organic Foods<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/consult"><li>Consult With Doctor<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/contact"><li>Contact Us<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/join"><li>Join Us<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/wallet"><li>Wallet<i class="fa fa-angle-right"></i></a></li>
+			<a href="/tracker"><li>Track your order<i class="fa fa-angle-right"></i></a></li>
+		        <a href="/account"><li>Login/Signup<i class="fa fa-angle-right"></i></a></li>
+			<a href="/bot"><li>Talk to MAB?<i class="fa fa-angle-right"></i></a></li>
+			   <a href="/customerservice" ><li>Help?<i class="fa fa-angle-right"></i></a></li>
+
+		    {% endif %}
+	    </ul>     
+   	</div>		
+</section>
+
+{% block body1 %}{% endblock body1 %}
+
+
+
+<!----------------------------Website Features----------------------------------->
+<section class="website-features">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 feature-box">
+				<img src="{% static 'img/l1.png' %}">
+				<div class="feature-text">
+					<p><b>Guaranteed 100% </b> Orginal items</p><br>
+				</div>				
+			</div>
+			<div class="col-md-3 feature-box">
+				<img src="{% static 'img/l2.png' %}">
+				<div class="feature-text">
+					<p><b>Easy Returns</b> on each damaged items</p><br>
+				</div>				
+			</div>
+			<div class="col-md-3 feature-box">
+				<img src="{% static 'img/l3.png' %}">
+				<div class="feature-text">
+					<p><b>Free delivery for every</b> order more than Rs200.</p><br>
+				</div>				
+			</div>
+			<div class="col-md-3 feature-box">
+				<img src="{% static 'img/l6.png' %}">
+				<div class="feature-text">
+					<p><b>Guaranteed discount</b> on every products</p><br>
+				</div>				
+			</div>
+			
+		</div>
+	</div>
+</section>
+
+<!----------------------------Footer--------------------------------------------->
+<footer class="container pt-4">
+	  <div class="row">
+	    <div class="col-6 col-md">
+	      <h5>Company</h5>
+	      <ul class="list-unstyled text-small">
+	        <li><a class="text-muted" href="#">Career</a></li>
+	        <li><a class="text-muted" href="#">About Us</a></li>
+	        <li><a class="text-muted" href="#">Partner with DMEZ</a></li>
+	      </ul>
+	      <h5>Our Services</h5>
+	      <ul class="list-unstyled text-small">
+	        <li><a class="text-muted" href="#">Order Medicine</a></li>
+	        <li><a class="text-muted" href="#">Ayurvedic Products</a></li>
+	        <li><a class="text-muted" href="#">Organic Food</a></li>
+	      </ul>
+	    </div>
+
+	    <div class="col-6 col-md">
+	      <h5>Featured Categories</h5>
+	      <ul class="list-unstyled text-small">
+	        <li><a class="text-muted" href="#">Personal Care</a></li>
+	        <li><a class="text-muted" href="#">Daily Essentials</a></li>
+	        <li><a class="text-muted" href="#">Ayurvedic Store</a></li>
+	        <li><a class="text-muted" href="#">Mother & Baby care</a></li>
+	        <li><a class="text-muted" href="#">Sexual Wellness</a></li>
+	        <li><a class="text-muted" href="#">Diabetic care</a></li>
+	        <li><a class="text-muted" href="#">Nutrition & Suppliments</a></li>
+	        <li><a class="text-muted" href="#">Proteins & Vitamins</a></li>
+	      </ul>
+
+	    </div>
+	    <div class="col-6 col-md">
+	      <h5>Need Help</h5>
+	      <ul class="list-unstyled text-small">
+	        <li><a class="text-muted" href="#">Browse All Medicines</a></li>
+	        <li><a class="text-muted" href="#">Browse All Molecules</a></li>
+	        <li><a class="text-muted" href="#">FAQs</a></li>
+	      </ul>
+
+	      <h5>Policy Info</h5>
+	      <ul class="list-unstyled text-small">
+	        <li><a class="text-muted" href="#">Editorial Policy</a></li>
+	        <li><a class="text-muted" href="#">Privacy Policy</a></li>
+	        <li><a class="text-muted" href="#">Terms and condition</a></li>
+	      </ul>
+	    </div>
+	    <div class="col-6 col-md">
+	      <h5>&nbsp&nbspFollow Us</h5>
+	      <ul class="list-unstyled text-small">
+	      	<i class="fa fa-google" aria-hidden="true"></i>
+	      	<i class="fa fa-facebook" aria-hidden="true"></i>
+	      	<i class="fa fa-twitter" aria-hidden="true"></i>
+	      	<i class="fa fa-linkedin" aria-hidden="true"></i>
+	      	<i class="fa fa-youtube" aria-hidden="true"></i>
+	       
+	      </ul>
+	    </div>
+	  </div><br><br>
+	<hr>
+	<center>
+	<p>&copy; Copyright issued to DMEZ- 2020</p>
+	</center>
+</footer>
+
+
+<!--------------------------------JS--------------------------------------------->
+<script>
+		function openmenu()
+		{
+			document.getElementById("side-menu").style.display="block"
+			document.getElementById("menu-btn").style.display="none"
+			document.getElementById("close-btn").style.display="block"
+		}
+		function closemenu()
+		{
+			document.getElementById("side-menu").style.display="none"
+			document.getElementById("menu-btn").style.display="block"
+			document.getElementById("close-btn").style.display="none"
+		}
+</script>
+<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+{% block js %}{% endblock %}
+</body>
+</html>

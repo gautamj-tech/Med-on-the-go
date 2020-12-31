@@ -1,0 +1,410 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Welcome
+{% endblock title %}
+
+{% block style1 %}
+<link rel="stylesheet" type="text/css" href="{% static '/styne.css' %}">
+{% endblock style1 %}
+
+
+{% block body1 %}
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+
+</nav>
+	<div class="slider">
+			<div id="slider" class="carousel slide carousel-fade" data-ride="carousel">
+				<div class="carousel-inner">
+				    <div class="carousel-item active">
+				      <img src="{% static '/img/i1.gif' %}" style="height:430px" class="d-block w-100">
+				    </div>
+				    <div class="carousel-item">
+				      <img src="{% static '/img/i2.jpg' %}" style="height:430px" class="d-block w-100">
+				    </div>
+				    <div class="carousel-item">
+				      <img src="{% static '/img/s3.jpg' %}" style="height:430px" class="d-block w-100">
+				    </div>
+				    <div class="carousel-item">
+				      <img src="{% static '/img/s4.jpg' %}"style="height:430px" class="d-block w-100">
+				    </div>
+			  	</div>
+				<ol class="carousel-indicators">
+					<li data-target="#slider" data-slide-to="0" class="active"></li>
+				    <li data-target="#slider" data-slide-to="1"></li>
+				    <li data-target="#slider" data-slide-to="2"></li>
+				    <li data-target="#slider" data-slide-to="3"></li>
+				</ol>
+			</div>
+	</div>
+
+
+<!-------------------------Feature Categories--------------------------------------->
+<section class="featured-categories">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-sm-12 col-xs-10">
+				<img src="{% static '/img/med/242.jpg' %}">
+			</div>
+			<div class="col-md-4 col-sm-12 col-xs-10">
+				<img src="{% static 'img/med/310.jpg' %}">
+			</div>
+			<div class="col-md-4 col-sm-12 col-xs-10">
+				<img src="{% static 'img/med/322.jpg' %}">
+			</div>
+		</div>
+	</div>
+</section>
+
+<!------------------------------------Exclusive Offer------------------------>
+<div class="offer">
+	<div class="small-container">
+		<div class="row">
+			<div class="col-2">
+				<img src="{% static 'images/pro/tonikem-gold-nutritional-supplement-capsule-10-capsule-strip.png' %}" class="offer-img">
+			</div>
+			<div class="col-2">
+				<p>Exclusively available on DMEZ</p>
+				<h1>Tonikem Gold</h1>
+				<small>Tonikem Gold Capsule is a dietary supplement used to improve the health status by modulating immune system. It helps to maintain and promote the overall well being and decreases the risk of chronic diseases.</small><br>
+				<a href="" class="btn1">Buy Now &#8594;</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!----------------------------Website Features----------------------------------->
+<section class="website-features">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 feature-box">
+				<img src="{% static 'img/l1.png' %}">
+				<div class="feature-text">
+					<p><b>Guaranteed 100% </b> Orginal items</p><br>
+				</div>
+			</div>
+			<div class="col-md-3 feature-box">
+				<img src="{% static 'img/l2.png' %}">
+				<div class="feature-text">
+					<p><b>Easy Returns</b> on each damaged items</p><br>
+				</div>
+			</div>
+			<div class="col-md-3 feature-box">
+				<img src="{% static 'img/l3.png' %}">
+				<div class="feature-text">
+					<p><b>Free delivery for every</b> order more than Rs200.</p><br>
+				</div>
+			</div>
+			<div class="col-md-3 feature-box">
+				<img src="{% static 'img/l6.png' %}">
+				<div class="feature-text">
+					<p><b>Guaranteed discount</b> on every products</p><br>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+<!--------------------------------------Onsale ------------------------------------->
+<section class="new-products">
+
+	<div class="container">
+		<div class="title-box">
+			<h2>Today's Deal</h2>
+		</div>
+
+		<div class="container">
+		    <div class="row">
+		        {% for item in Todays %}
+		        <div class="col-lg-4"><br>
+		            <img class="thumbnail" src="{{item.imageURL}}">
+		            <div class="box-element product">
+		                <h6><strong>{{item.name}}</strong></h6>
+		                <p>{{item.desc|slice:"0:63"}}...</p>
+		                <hr>
+
+		                <button data-product="{{item.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+
+		                <a class="btn btn-outline-success" href="/Todays/{{item.id}}">View</a><br>
+		                <h4 style="display: inline-block; float: right"><strong>Rs.{{item.price}}</strong></h4><h4><strike>MRP Rs.{{item.mrp_price}}</strike></h4>
+
+		            </div>
+		        </div>
+		        {% endfor %}
+		    </div>
+
+		</div>
+
+	</div>
+</section>
+
+<!-------------------------------New Products--------------------------------------->
+<section class="new-products">
+	<div class="container">
+		<div class="title-box">
+			<h2>Best Selling</h2>
+		</div>
+
+		<div class="container">
+		    <div class="row">
+		        {% for best in Bests %}
+		        <div class="col-lg-4"><br>
+		            <img class="thumbnail" src="{{best.imageURL}}">
+		            <div class="box-element product">
+		                <h6><strong>{{best.name}}</strong></h6>
+		                <p>{{best.desc|slice:"0:63"}}..</p>
+											<button data-product="{{best.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+
+		                <a class="btn btn-outline-success" href="/Bests/{{best.id}}">View</a><br>
+
+
+<h4 style="display: inline-block; float: right"><strong>Rs.{{best.price}}</strong></h4><h4><strike>MRP Rs.{{best.mrp_price}}</strike></h4>
+		            </div>
+		        </div>
+		        {% endfor %}
+		    </div>
+
+		</div>
+
+	</div>
+</section>
+
+<!------------------------------------Exclusive Offer------------------------>
+<div class="offer">
+	<div class="small-container">
+		<div class="row">
+			<div class="col-2">
+				<img src="{%static 'images/pro/p1.png'%}" class="offer-img">
+			</div>
+			<div class="col-2">
+				<p>Exclusively available on DMEZ</p>
+				<h1>Pearldew Hand Sanatizer</h1>
+				<small>With Pearldew Hand Sanitizer it is protection on-th-go without soap & water. This sanitizer is formulated with skin conditioning emollients, designed to be used multiple times without drying your hands.</small><br>
+				<a href="" class="btn1">Buy Now &#8594;</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-------------------------------------testimonial--------------------------------->
+<div class="testimonial">
+	<div class="small-container">
+		<div class="row">
+			<div class="col-md-3">
+				<i class="fa fa-quote-left"></i>
+				<p>This is just a dummy text of the printing and typesetting industry. This has been the industry's standard dummy text ever.</p>
+				<div class="rating">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star-o"></i>					
+				</div>
+				<h3>Sean Parker</h3>
+			</div>
+			<div class="col-md-3">
+				<i class="fa fa-quote-left"></i>
+				<p>This is just a dummy text of the printing and typesetting industry. This has been the industry's standard dummy text ever.</p>
+				<div class="rating">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star-o"></i>					
+				</div>
+				<h3>Hike Smith</h3>
+			</div>
+			<div class="col-md-3">
+				<i class="fa fa-quote-left"></i>
+				<p>This is just a dummy text of the printing and typesetting industry. This has been the industry's standard dummy text ever.</p>
+				<div class="rating">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star-o"></i>					
+				</div>
+				<h3>Hike Smith</h3>
+			</div>
+			<div class="col-md-3">
+				<i class="fa fa-quote-left"></i>
+				<p>This is just a dummy text of the printing and typesetting industry. This has been the industry's standard dummy text ever.</p>
+				<div class="rating">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star-o"></i>					
+				</div>
+				<h3>Mabel Joe</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<i class="fa fa-quote-left"></i>
+				<p>This is just a dummy text of the printing and typesetting industry. This has been the industry's standard dummy text ever.</p>
+				<div class="rating">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star-o"></i>					
+				</div>
+				<h3>Sean Parker</h3>
+			</div>
+			<div class="col-md-3">
+				<i class="fa fa-quote-left"></i>
+				<p>This is just a dummy text of the printing and typesetting industry. This has been the industry's standard dummy text ever.</p>
+				<div class="rating">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star-o"></i>					
+				</div>
+				<h3>Hike Smith</h3>
+			</div>
+			<div class="col-md-3">
+				<i class="fa fa-quote-left"></i>
+				<p>This is just a dummy text of the printing and typesetting industry. This has been the industry's standard dummy text ever.</p>
+				<div class="rating">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star-o"></i>					
+				</div>
+				<h3>Hike Smith</h3>
+			</div>
+			<div class="col-md-3">
+				<i class="fa fa-quote-left"></i>
+				<p>This is just a dummy text of the printing and typesetting industry. This has been the industry's standard dummy text ever.</p>
+				<div class="rating">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star-o"></i>					
+				</div>
+				<h3>Mabel Joe</h3>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!------------------------------about us--------------------------------------------->
+<div class="offer">
+	<div class="best-features">
+	      <div class="container">
+	        <div class="row">
+	          <div class="col-md-12 mt-5">
+	            <div class="section-heading">
+	              <h2>About DMEZ</h2>
+	            </div>
+	          </div>
+	          <div class="col-md-6">
+	            <div class="left-content">
+	              <h4>Looking for the best products?</h4>
+	              <p>DMEZ is not just another company in the areas of healthcare as its resolve is to bring a revolution in the areas of healthcare space to start with. It doesn't want to just deliver medicines but also want to make you small.<br><br>India's biggest and authentic generic drugs. Aimed to fulfill Government's and WHO's resolve of healthcare for all. Mission is to reach each and every household of the country. Our resolve is affordable, accessible, equitable healthcare for all with faster speed.</p>
+	              <ul class="featured-list">
+	                <li>Quality First</li>
+	                <li>Authentic Products</li>
+	                <li>Free Delivery above Rs200</li>
+	                <li>Easy Ordering</li>
+	                <li>Fastest Delivery</li>
+	              </ul>
+	              <a href="about.html" class="filled-button">Order Now</a>
+	              <a href="about.html" class="filled-button">Read More</a><br><br>
+	            </div>
+	          </div>
+	          <div class="col-md-6">
+	            <div class="right-image">
+	              <img src="{%static 'img/logo.jpg' %}" alt="">
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	</div>
+</div>
+
+
+<!-------------------------------Covid Products--------------------------------------->
+<style>
+.title-boxc{
+	background-color: green;
+	color: #fff;
+	width: 300px;
+	padding: 4px 10px;
+	height: 40px;
+	margin-bottom: 30px;
+	display: flex;
+}
+
+.title-boxc h4{
+	font-size: 24px;
+}
+.title-boxc::after{
+	content: '';
+	border-top: 40px solid green;
+	border-right: 150px solid transparent;
+	position: absolute;
+	display: flex;
+	margin-top: -4px;
+	margin-left: 290px;
+}
+</style>
+<section class="new-products">
+			<div class="container">
+				<div class="title-boxc">
+
+					<h4>Covid Protection Supplies</h4>
+				</div>
+				<div class="container">
+				    <div class="row">
+          {% for covid in covids %}
+				        <div class="col-lg-4"><br>
+				            <img class="thumbnail" src="{{covid.imageURL}}">
+				            <div class="box-element product">
+				           <h6><strong>{{covid.name}}</strong></h6>
+				        <p>{{covid.desc|slice:"0:63"}}..</p>
+	<button data-product="{{covid.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+
+				 <a class="btn btn-outline-success" href="/covids/{{covid.id}}">View</a><br>
+<h4 style="display: inline-block; float: right"><strong>Rs.{{covid.price}}</strong></h4><h4><strike>MRP Rs.{{covid.mrp_price}}</strike></h4>
+				            </div>
+				        </div>
+				        {% endfor %}
+				    </div>
+
+				</div>
+
+			</div>
+		</section>
+
+				
+			
+				
+
+<!----------------------------call to action--------------------------------------->
+<div class="call-to-action">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inner-content">
+              <div class="row">
+                <div class="col-md-8">
+                  <h4>Want to Become an <em>Enterprenaur</em></h4>
+                  <p>If you want to earn much more money then job, if you want to be your own boss, if you want to become an enterprenaur then join us.</p>
+                </div>
+                <div class="col-md-4">
+                  <a href="#" class="filled-button">JOIN US</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
+<hr>
+
+{% endblock body1 %}

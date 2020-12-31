@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Account | DMEZ Healthcare | Online Medicine</title>
+  <link rel="stylesheet" type="text/css" href="filter1.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+ 
+<style>
+ body {
+  background: #f8f9fa;
+  
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+</style>
+</head>
+<body>
+  <div class="top-nav-bar">
+    <div class="search-box">
+      <i class="fa fa-bars" id="menu-btn" onclick="openmenu()"></i>
+      <i class="fa fa-times" id="close-btn" onclick="closemenu()"></i>
+      
+
+      <a href="index.html"><img src="img/logo.jpg" class="logo" width="55px" height="50px"></a>
+      <input type="text" class="form-control" placeholder="Search">
+      <span class="input-group-text"><a href="#" style="color: #fff">Upload Prescriptions</a></span>   
+    </div>
+    <div class="menu-bar">
+      <ul>
+        <a href="#"  style="color: #fff"><li><i class="fa fa-shopping-basket"></i>Cart</li></a>
+        <a href="account.html" style="color: #fff"><li><i class="fa fa-user"></i>Login</li></a>
+        <a href="#" style="color: #fff"><li><i class="fa fa-handshake-o"></i>Join</li></a>
+      </ul>
+    </div>    
+  </div>
+  <section class="header">
+    <div class="side-menu" id="side-menu">
+      <ul>
+        <li>On Sale<i class="fa fa-angle-right"></i>
+        <ul>
+          <li>Mobiles</li>
+          <li>Tablets</li>
+          <li>Smart Watch</li>
+          <li>Children's Toys</li>
+          <li>Game Zone</li>
+          <li>Ladies Purse</li>
+        </ul>
+        </li>
+        <a href="about.html"><li>About Us<i class="fa fa-angle-right"></i></a>
+        </li>
+        <li>Order Medicine<i class="fa fa-angle-right"></i>
+        <ul>
+          <li>All Computers</li>
+          <li>Tablets</li>
+          <li>Destops</li>
+          <li>Drives and Storage</li>
+          <li>Game Zone</li>
+          <li>Desktops</li>
+        </ul>
+        </li>
+        <li>Healthcare Product<i class="fa fa-angle-right"></i>
+        <ul>
+          <li>All Books</li>
+          <li>Fiction Books</li>
+          <li>Children's Book</li>
+          <li>Kindle eBooks</li>
+        </ul>
+        </li>
+        
+        <li>Covid Testing<i class="fa fa-angle-right"></i>
+        <ul>
+          <li>All Magazines</li>
+          <li>Sports Magazines</li>
+          <li>Kindle e-Books</li>
+        </ul>
+        </li>
+        <li>Offers<i class="fa fa-angle-right"></i>
+        <ul>
+          <li>Moterbike Acessories</li>
+          <li>Car Parts</li>
+          <li>Car and Bike Cares</li>
+          <li>All Motorbike Products</li>
+        </ul>
+        </li>
+        <li>Upcoming Products<i class="fa fa-angle-right"></i>
+        <ul>
+          <li>All Movies</li>
+          <li>All Hindi</li>
+          <li>Blu-ray</li>
+          <li>All English</li>
+        </ul>
+        </li>
+
+        <a href="test.html"><li>Sports & Fitness<i class="fa fa-angle-right"></i></a>
+
+        </li>
+        <li>Body Care<i class="fa fa-angle-right"></i>
+        <ul>
+          <li>Beauty & Grooming</li>
+          <li>Luxury Beauty</li>
+          <li>Make-up</li>
+          <li>Health & Personal Care</li>
+        </ul>
+        </li>
+        <li>Upload Symptoms<i class="fa fa-angle-right"></i>
+        <ul>
+          <li>All Furniture</li>
+          <li>Chairs and Tables</li>
+          <li>Beds and Sofas</li>
+          <li>Dining Set</li>
+        </ul>
+        </li>
+        <li>Contact Us<i class="fa fa-angle-right"></i>
+        <ul>
+          <li></li>
+          <li>All Grocery</li>
+          <li>Coffee and Tea</li>
+          <li>Snack Foods</li>
+        </ul>
+        </li>
+        <a href="account.html"><li>Login <i class="fa fa-angle-right"></i></a>
+        </li>
+        <a href="account.html"><li>Register <i class="fa fa-angle-right"></i></a>
+        </li>
+      </ul>     
+    </div>
+    </div>    
+  </section>
+
+
+
+             
+                <div class="col-md-8 order-md-2 col-lg-9">
+                  <div class="container-fluid">
+                    <div class="row   mb-5">
+                      <div class="col-12">
+                        
+                
+              
+                      <div class="col-md-4 order-md-1 col-lg-3 sidebar-filter">
+                  <h1><u> Filters</u> </h1>
+<br>
+                
+                  <h2 class="text-uppercase font-weight-bold mb-3">Categories</h2>
+                  <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="category-1">
+                      <label class="custom-control-label" for="category-1">Health Care</label>
+                    </div>
+                  </div>
+                  <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="category-2">
+                      <label class="custom-control-label" for="category-2">Covid Essentials</label>
+                    </div>
+                  </div>
+                  <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="category-3">
+                      <label class="custom-control-label" for="category-3">Skin Care</label>
+                    </div>
+                  </div>
+                  <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="category-4">
+                      <label class="custom-control-label" for="category-4">Body Care</label>
+                    </div>
+                  </div>
+                  <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="category-5">
+                      <label class="custom-control-label" for="category-5">Hair Care</label>
+                    </div>
+                  </div>
+                  <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="category-6">
+                      <label class="custom-control-label" for="category-6">Nutrient supplements</label>
+                    </div>
+                  </div>
+                  <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+                  <h2 class="text-uppercase mt-5 mb-3 font-weight-bold">Price</h2>
+                  <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="filter-size-1">
+                      <label class="custom-control-label" for="filter-size-1">&#8377 10- &#8377 100</label>
+                    </div>
+                  </div>
+                  <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="filter-size-2">
+                      <label class="custom-control-label" for="filter-size-2">&#8377 101- &#8377 300</label>
+                    </div>
+                  </div>
+                  <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="filter-size-3">
+                      <label class="custom-control-label" for="filter-size-3">&#8377 301- &#8377 500</label>
+                    </div>
+                  </div>
+                  <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="filter-size-4">
+                      <label class="custom-control-label" for="filter-size-4">&#8377 501- &#8377 1000</label>
+                    </div>
+                  </div>
+                  <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="filter-size-5">
+                      <label class="custom-control-label" for="filter-size-5">>&#8377 1000</label>
+                    </div>
+                  </div>
+                  <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+                  <h2 class="text-uppercase mt-5 mb-3 font-weight-bold">Price</h2>
+                  <div class="price-filter-control">
+                    <input type="number" class="form-control w-50 pull-left mb-2" value="50" id="price-min-control">
+                    to
+                    <br>
+              
+                    <input type="number" class="form-control w-50 pull-right" value="150" id="price-max-control">
+                  </div>
+                  <input id="ex2" type="text" class="slider " value="50,150" data-slider-min="10" data-slider-max="200" data-slider-step="5" data-slider-value="[50,150]" data-value="50,150" style="display: none;">
+                  <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+                  <br>
+                
+                  <button class="button button1">Apply Filters</button>
+                </div>
+
+              </div>
+            </div>
+
+
+
+
+ 
+
+
+<center>
+<p>&copy; Copyright issued to DMEZ- 2020</p>
+</center>
+</body>
+</html>

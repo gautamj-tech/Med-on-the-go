@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{products.product_name}}
+{% endblock title %}
+
+{% block style1 %}
+<link rel="stylesheet" type="text/css" href="{% static '/styles.css' %}">
+{% endblock style1 %}
+
+
+{% block body1 %}
+
+
+<!-------------------------------Single Product-------------------------------->
+
+<section class="single-product">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5">
+  			    <img src="{{Todays.imageURL}}" height="500px" class="d-block w-100">
+			</div>
+			<div class="col-md-7 pl-5">
+				<p class="new-arrival text-center">NEW</p>
+				<h3>{{Todays.name}}</h3>
+				<p>Product Code: IRSC {{Todays.id}}</p>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star-half-o"></i>
+				<p class="price"><del>Rs.{{Todays.mrp_price}}</del>&nbsp&nbsp&nbsp<b>Rs.{{Todays.price}}</b></p>
+				<p><b>Availability: </b> In Stock</p>
+				<p><b>Condition: </b> New</p>
+				<label>Quantity: </label>
+				<input type="text" value="1">
+				<button class="btn btn-primary" type="button">Add to Cart</button>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--------------------Product Description------------------------------------->
+
+<section class="product-description">
+	<div class="container">
+		<h6>Product Description</h6>
+		<p>{{Todays.desc}}</p>
+		<hr>
+
+	</div>
+
+	
+
+
+{% endblock %}

@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Responsive Contact US Page
+{% endblock title %}
+
+{% block style1 %}
+<link rel="stylesheet" type="text/css" href="{% static '/styleallpro.css' %}">
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+{% endblock style1 %}
+
+{% block body1 %}
+<style media="screen">
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body{background color: white;}
+*{
+   padding: 0;
+   margin: 0;
+   font-family: 'Poppins',sans-sans-serif;
+   box-sizing: border-box;
+}
+.contentd{
+  background-color:white;
+}
+.contactd
+{
+  position:relative;
+  min-height: 100vh;
+  padding: 50px 100px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background color:green;
+}
+.contactd .contentd {
+  max-width: 800px;
+  text-align: center;
+}
+
+.contactd .contentd h2
+{
+  font-size: 36px;
+  font-weight: 500;
+  color: black;
+
+}
+.contactd .contentd p
+{
+  font-weight: 300;
+  color: black;
+}
+.containerd
+ {
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  }
+  .containerd .contactInfod{
+    width:50%;
+    display:flex;
+    flex-direction: column;
+  }
+
+  .containerd .contactInfod .boxd{
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+  }
+
+.containerd .contactInfod .boxd .icond{
+  min-width: 60px;
+  height: 60px;
+  background: lightgreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 22px;
+}
+
+.containerd .contactInfod .boxd .textd{
+  display: flex;
+  margin-left: 20px;
+  font-size: 16px;
+  color: black;
+  flex-direction: column;
+  font-weight: 300;
+}
+.containerd .contactInfod .boxd .textd h3{
+  font-weight: 500;
+  color: #00bcd4;
+}
+.contactformd{
+  width:40%;
+  padding: 40px;
+  background: lightgreen;
+}
+.contactformd h2{
+  font-size: 30px;
+  color:black;
+  font-weight: 500;
+}
+.contactformd .inputboxd{
+  position: relative;
+  width:100%;
+  margin-top: 10px;
+}
+.contactformd .inputboxd input,
+.contactformd .inputboxd textarea{
+  width: 100%;
+  padding: 5px 0;
+  font-size:16px;
+  margin:10px 0;
+  border: None;
+  border-bottom: 2px solid #333;
+  outline: None;
+  resize: None;
+}
+.contactformd .inputboxd span{
+  position: absolute;
+  left: 0;
+  padding: 5px 0;
+  font-size:16px;
+  margin:10px 0;
+  pointer-events: none;
+  transition: 0.5s;
+  color: black;
+
+}
+.contactformd .inputboxd input:focus ~ span,
+.contactformd .inputboxd input:valid ~ span,
+.contactformd .inputboxd textarea:focus ~ span,
+.contactformd .inputboxd textarea:valid ~ span
+{
+  color: #e91e63;
+  font-size:12px;
+  transform:translateY(-20px);
+}
+.contactformd .inputboxd input[type="submit"]{
+  width: 150px;
+  background: green;
+  color:#fff;
+  border:none;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 18px;
+}
+@media(max-width:991px){
+  .contactd{
+    padding: 50px;
+  }
+  .containerd{
+    flex-direction: column;
+  }
+  .containerd .contactInfod{
+    margin-bottom: 40px;
+    }
+  .containerd .contactInfod,.contactformd{
+    width:100%
+  }
+}
+
+</style>
+<section class="contactd">
+  <div class="contentd">
+    <h2>Contact Us</h2>
+    <p>If you have any questions or queries a member of staff will always be happy
+    to help. Feel free to contact us by whatsapp or email and we will be sure to get back to you as soon as possible.</p>
+
+  </div>
+  <div class="containerd">
+    <div class="contactInfod">
+    <div class="boxd">
+      <div class="icond">
+        <a href="https://goo.gl/maps/eU3FYjzV5j3nRiXL6" target="_blank">
+        <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i></div>
+        <div class="textd">
+          <h3>Address</h3>
+          <p>India </p>
+      </div>
+  </div>
+  <div class="boxd">
+    <div class="icond">
+      <a href="callto:9938882805" target="_blank">
+      <i class="fa fa-phone fa-2x " aria-hidden="true"></i></div></a>
+      <a href="callto:9938882805" target="_blank">
+      <div class="textd">
+        <h3>Phone</h3>
+        <p>+91 9938882805</p>
+    </div>
+</div>
+  <div class="boxd">
+    <div class="icond">
+      <a href="https://api.whatsapp.com/send?phone=919938882805" target="_blank">
+      <i class="fa fa-whatsapp fa-2x " aria-hidden="true"></i></div></a>
+      <a href="https://api.whatsapp.com/send?phone=919938882805" target="_blank">
+      <div class="textd">
+        <h3>Whatsapp</h3>
+        <p>+91 9938882805</p></a>
+    </div>
+</div>
+<div class="boxd">
+  <div class="icond">
+    <a href="mailto:customersupport@dmez.in" target="_blank">
+    <i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></div>
+  <a href="mailto:customersupport@dmez.in" target="_blank">
+    <div class="textd">
+      <h3>Email</h3></a>
+      <p>customersupport@dmez.in</p></a>
+  </div>
+</div>
+</div>
+<div class="contactformd">
+  <form id="contact" name="contactf" action="{% url 'coming'%}" method="post">
+    {% csrf_token %}
+    <h2>Send Message</h2>
+    <div class="inputboxd">
+      <input type="text" name="name" required="required" id="name">
+      <span>Full Name</span>
+    </div>
+    <div class="inputboxd">
+      <input type="text" name="email" required="required" id="email">
+      <span>Email</span>
+    </div>
+    <div class="inputboxd">
+      <input type="text" name="number" required="required" id="number">
+      <span>Mob Number</span>
+    </div>
+    <div class="inputboxd">
+      <textarea required="required" id="message" name="message"></textarea>
+      <span>Type your Message...</span>
+  </div>
+    <div class="inputboxd">
+      <input type="submit" name="" value="Send" id="submit">
+      </div>
+
+  </form>
+</div>
+
+
+
+</section>
+
+
+
+{% endblock body1 %}

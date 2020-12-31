@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Best Selling |
+{% endblock title %}
+
+{% block style1 %}
+<link rel="stylesheet" type="text/css" href="{% static '/styles.css' %}">
+{% endblock style1 %}
+
+
+{% block body1 %}
+	
+
+
+   <div class="page-heading products-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              <h2>Best Selling Products</h2><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="products">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="filters">
+              <ul>
+                  <li class="active" data-filter="*">All Products</li>
+                  <li data-filter=".Internship">Covid Essentials</li>
+                  <li data-filter=".Mask">Baby and Moms care</li>
+                  <li data-filter=".work">Skin Care</li>
+                  <li data-filter=".ma">Nutrition/Fitness</li>
+                  <li data-filter=".be">Health Care</li>
+                  <li data-filter=".ki">Home Care</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="filters-content">
+                <div class="row grid">
+                  {% for product in products %}
+                    <div class="col-lg-4 col-md-4 all {{product.category}}">
+                      <div class="product-item">
+                        <a href="#"><img class="thumbnail" src="{{product.imageURL}}"></a>
+                        <div class="down-content">
+                          <a href="#"><h4>{{product.name}}</h4></a>
+                          <h6>Rs {{product.price}}</h6>
+                          <p>{{product.desc|slice:"0:63"}}...</p>
+                          <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                          <a class="btn btn-outline-success" href="/products/{{product.id}}">View</a>
+
+                        </div>
+                      </div>
+                    </div>
+                   
+                {% endfor %}
+                </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <ul class="pages">
+              <li class="active"><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+<!--------------------------------------Onsale --------------------------------->
+
+    <div class="call-to-action">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inner-content">
+              <div class="row">
+                <div class="col-md-8">
+                  <h4>Want to Become an <em>Enterprenaur</em></h4>
+                  <p>If you want to earn much more money then job, if you want to be your own boss, if you want to become an enterprenaur then join us.</p>
+                </div>
+                <div class="col-md-4">
+                  <a href="#" class="filled-button">JOIN US</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+ <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+
+    <!-- Additional Scripts -->
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script src="{% static 'assets/js/owl.js' %}"></script>
+    <script src="{% static 'assets/js/slick.js' %}"></script>
+    <script src="{% static 'assets/js/isotope.js' %}"></script>
+    <script src="{% static 'assets/js/accordions.js' %}"></script>
+
+{% endblock body1 %}

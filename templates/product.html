@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{products.product_name}}
+{% endblock title %}
+
+{% block style1 %}
+<link rel="stylesheet" type="text/css" href="{% static '/styles.css' %}">
+{% endblock style1 %}
+
+
+{% block body1 %}
+
+
+<!-------------------------------Single Product-------------------------------->
+
+<section class="single-product">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5"> 
+  			    <img src="/media/{{products.image}}" height="500px" class="d-block w-100">
+			</div>
+			<div class="col-md-7 pl-5">
+				<p class="new-arrival text-center">NEW</p>
+				<h3>{{products.name}}</h3>
+				<p>Product Code: IRSC {{product.id}}</p>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star-half-o"></i>
+				<p class="price"><del>MRP : Rs.{{products.mrp_price}}</del>&nbsp&nbsp&nbsp<b>Rs.{{products.price}}</b></p>
+				<p><b>Availability: </b> In Stock</p>
+				<p><b>Condition: </b> New</p>
+				<label>Quantity: </label>
+				<input type="text" value="1">
+				<button class="btn btn-primary" type="button">Add to Cart</button>		
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--------------------Product Description------------------------------------->
+
+<section class="product-description">
+	<div class="container">
+		<h6>Product Description</h6>
+		<p>{{products.desc}}</p>
+		<hr>
+		
+	</div>
+
+	<div class="container">
+		<div class="title-box">
+			<h2>Similar</h2>			
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="product-top">
+					<img src="{% static 'img/a.jpg' %}">
+					<div class="overlay-right">
+						<button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-eye"></i></button>
+						<button type="button" class="btn btn-secondary" title="Add to Wishlist"><i class="fa fa-heart-o"></i></button>
+						<button type="button" class="btn btn-secondary" title="Add to Cart"><i class="fa fa-shopping-cart"></i></button>
+					</div>
+				</div>
+				<div class="product-bottom text-center">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star-half-o"></i>
+					<h3>T-Shirt</h3>
+					<h5>$40</h5>
+				</div>				
+			</div>
+			<div class="col-md-3">
+				<div class="product-top">
+					<img src="{% static 'img/t2.jpg' %}">
+					<div class="overlay-right">
+						<button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-eye"></i></button>
+						<button type="button" class="btn btn-secondary" title="Add to Wishlist"><i class="fa fa-heart-o"></i></button>
+						<button type="button" class="btn btn-secondary" title="Add to Cart"><i class="fa fa-shopping-cart"></i></button>
+					</div>
+				</div>
+				<div class="product-bottom text-center">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star-half-o"></i>
+					<h3>T-Shirt</h3>
+					<h5>$50</h5>
+				</div>				
+			</div>
+			<div class="col-md-3">
+				<div class="product-top">
+					<img src="{% static 'img/t3.jpg' %}">
+					<div class="overlay-right">
+						<button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-eye"></i></button>
+						<button type="button" class="btn btn-secondary" title="Add to Wishlist"><i class="fa fa-heart-o"></i></button>
+						<button type="button" class="btn btn-secondary" title="Add to Cart"><i class="fa fa-shopping-cart"></i></button>
+					</div>
+				</div>
+				<div class="product-bottom text-center">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star-o"></i>
+					<h3>T-Shirt</h3>
+					<h5>$35</h5>
+				</div>				
+			</div>
+			<div class="col-md-3">
+				<div class="product-top">
+					<img src="{% static 'img/t1.jpg' %}">
+					<div class="overlay-right">
+						<button type="button" class="btn btn-secondary" title="Quick Shop"><i class="fa fa-eye"></i></button>
+						<button type="button" class="btn btn-secondary" title="Add to Wishlist"><i class="fa fa-heart-o"></i></button>
+						<button type="button" class="btn btn-secondary" title="Add to Cart"><i class="fa fa-shopping-cart"></i></button>
+					</div>
+				</div>
+				<div class="product-bottom text-center">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<h3>T-Shirt</h3>
+					<h5>$20</h5>
+				</div>				
+			</div>			
+		</div>		
+	</div>	
+</section>
+
+
+{% endblock %}

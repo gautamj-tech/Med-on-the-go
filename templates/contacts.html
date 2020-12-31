@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Raleway">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+
+
+  </head>
+  <body>
+<div class="container">
+    <img src="/static/img/contact1.jpg" class="d-block w-100  " alt="...">
+    <div class="alert alert-primary" role="alert">
+  Send Your Query Our customer Service will connect to you shortly.......!
+</div>
+</div>
+<center>
+    <h1> <i>{{ recieved }}</i></h1>
+
+</center>
+
+<h1 class="text-center"><b></b></h1>
+<div class="container">
+    <form method='GET' action="/mailing">
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+        </div>
+
+
+         <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="phone" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number Here">
+        </div>
+        <div class="form-group">
+            <label for="desc">Please tell us about your query in detail</label>
+            <textarea class="form-control" id="desc" name="message" rows="3"></textarea>
+        </div>
+        <button class="btn btn-success btn-lg" type="submit">Submit</button>
+        <a href="/" class="btn btn-danger btn-lg" type="submit">Home</a>
+    </form>
+</div>
+ <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

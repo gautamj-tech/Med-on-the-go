@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Covid Testing |
+{% endblock title %}
+
+{% block style1 %}
+<link rel="stylesheet" type="text/css" href="{% static '/styles.css' %}">
+{% endblock style1 %}
+
+
+{% block body1 %}
+
+
+<div class="container-fluid mb-4" style="padding-left: 0; padding-right: 0;">
+	<img src="{% static 'img/a1.jpg' %}" width="100%">
+</div>
+
+<!------------------------------------map------------------------>
+<div class="offer">
+	<div class="container">
+		<div class="row">
+			<div class="container-fluid">
+                <div class="map-responsive">
+                    <!-- <script>
+                    let map;
+
+                        function initMap() {
+                        map = new google.maps.Map(document.getElementById("map"), {
+                            center: {
+                        lat: -34.397,
+                        lng: 150.644,
+                            },
+                            zoom: 8,
+                    });
+                        }
+                    
+                    </script> -->
+                    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+                    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE&callback=initMap&libraries=&v=weekly" defer
+					></script> -->
+					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE&libraries=places">
+					</script>
+                    <script type="text/javascript">
+                        x = navigator.geolocation;
+
+                        x.getCurrentPosition(success , failure);
+                        
+                        function initMap(){
+                            
+                        }
+						var infowindow;
+						var map;
+						var marker;
+						var service;
+
+                        function success(position){
+                            var myLat = position.coords.latitude;
+                            var myLong = position.coords.longitude;
+
+                            var coords = new google.maps.LatLng(myLat,myLong);
+
+                            var mapOptions = {
+                                zoom:15,
+                                center:coords,
+                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                            }
+							infowindow = new google.maps.InfoWindow();
+                            map = new google.maps.Map(document.getElementById("map"),mapOptions);
+                            marker = new google.maps.Marker({map:map , position:coords});
+							service = new google.maps.places.PlacesService(map);
+							var request = {
+									location: coords,
+									radius: '500',
+									query: 'Hospital'
+								};
+								service.textSearch(request, callback);
+							
+							function callback(results, status) {
+							console.log("randi")
+							if (status == google.maps.places.PlacesServiceStatus.OK) {
+								console.log(results.length);
+								console.log(results);
+								for (var i = 0; i < results.length; i++) {
+									var place = results[i];
+									createMarker(results[i]);
+								}
+							}
+						}
+						function createMarker(place) {
+							var placeLoc = place.geometry.location;
+							var marker = new google.maps.Marker({
+								map: map,
+								position: place.geometry.location
+							});
+
+							google.maps.event.addListener(marker, 'click', function() {
+								infowindow.setContent(place.name);
+								infowindow.open(map, this);
+							});
+						}
+
+                        }   
+                        function failure(){}
+
+
+						
+						
+
+						
+
+						
+                    </script>
+                    <div class="map-responsive" id="map" style="height: 100%; width: 100%;" ></div>
+            </div>
+            </div>
+		</div>
+	</div>	
+</div>
+
+
+<!---------------------------------------------graph------------------------>
+<div class="testimonial mb-5">
+	<div class="small-container">
+		<h1 class="text-center mt-4 heading">Track Covid Tonight</h1>
+        <canvas id="myChart"></canvas>
+		<div class="row">
+			<div class="myList"></div>
+    		<!-- <script src="./scripts.js"></script> -->
+			<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+			<script>
+				const api = 'https://disease.sh/v3/covid-19/historical/all?lastdays=90';
+
+				const getData = async () => {
+				const response = await fetch(`${api}`);
+				if (response.ok) {
+					return await response.json();
+				} else {
+					return Promise.reject(response.status);
+				}
+				};
+
+				const result = getData();
+				result
+				.then((data) => {
+					let date = Object.keys(data.cases);
+					let total = Object.values(data.cases);
+					let deaths = Object.values(data.deaths);
+					let recovered = Object.values(data.recovered);
+
+					var ctx = document.getElementById('myChart').getContext('2d');
+					let myChart = new Chart(ctx, {
+					type: 'line',
+					data: {
+						labels: date,
+						datasets: [
+						{
+							label: 'Total Cases',
+							data: total,
+							borderColor: 'rgba(255, 99, 132)',
+							fill: false,
+						},
+						{
+							label: 'Recovered Cases',
+							data: recovered,
+							borderColor: 'rgba(153, 102, 255, 1)',
+							fill: false,
+						},
+						{
+							label: 'Deaths',
+							data: deaths,
+							borderColor: 'rgba(75, 192, 192, 1)',
+							fill: false,
+						},
+						],
+					},
+					options: {
+						scales: {
+						yAxes: [
+							{
+							scaleLabel: {
+								display: true,
+								labelString: 'Numbers in Thousands',
+							},
+							},
+						],
+						xAxes: [
+							{
+							scaleLabel: {
+								display: true,
+								labelString: 'Date(DD/MM/YYYY)',
+							},
+							},
+						],
+						},
+						title: {
+						display: true,
+						text: `Coronovirus Cases in India for Last Three Months`,
+						},
+					},
+					});
+				})
+				.catch((error) => {
+					console.log('Error: ', error);
+				});
+			</script>
+		</div>
+	</div>
+</div>
+
+{% endblock body1 %}

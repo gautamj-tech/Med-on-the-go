@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <title>DMEZ-wallet</title>
+
+    <link rel="stylesheet" href="http://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+     <link rel="stylesheet" href="http://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+.wallet-container
+{
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0)),url(image.jpg);
+    width: 600px;
+    color: #fff;
+    font-size: 15px;
+    padding: 15px 15px 0;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+}
+.page-title
+{
+  text-align:left;
+}
+.fa-user
+{
+float:right;
+}
+.fa-align-left
+{
+margin-right: 15px;
+}
+.amount-box img{
+width:50px
+
+}
+.amount{
+font-size:35px;
+}
+.amount-box p{
+margin-top: 10px;
+margin-bottom: -10px;
+}
+.btn-group .btn{
+margin: 8px;
+border-radius: 20px !important;
+font-size:15px;
+
+}
+.txn-history
+{text-align:left;
+
+}
+.txn-list
+{
+background-color:#fff;
+padding: 12px 10px;
+color: #777;
+font-size: 14px;
+margin: 7px 0;
+}
+.debit-amount{
+color: red;
+float: right;
+}
+.credit-amount{
+color:green;
+float:right;
+}
+@media screen and (max-width:959px){
+.wallet-container{
+width:100%}
+}
+
+    </style>
+</head>
+<body>
+<div class="wallet-container text-center">
+  <p class="page-title">
+    <i class="fa fa-align-left" aria-hidden="true"></i>  My-DMEZ-Wallet<i class="fa fa-user" aria-hidden="true"></i>
+  </p>
+    <div class="amount-box text-center">
+        <img src="/static/img/wallet.png">
+        <p> Total Balance:</p>
+        <p class="amount"></p>
+    </div>
+    <div class="btn-group text-center">
+        <button type="button" class="btn btn-outline-light">Add Money</button>
+                <button type="button" class="btn btn-outline-light">Widthdraw</button>
+
+    </div>
+    <div class="txn-history">
+        <p><b>History</b></p>
+        <p class="txn-list"> Shopped Product With Id:<B>38942324 </B><span class="debit-amount">-63 Rs</span></p>
+    </div>
+    <div class="footer-menu">
+        <div class="row text-center">
+            <div class="col-md-3">
+                <i class="fa fa-exclamation-circle" ></i>
+                <a href="/customerservice"> <p> Facing issues?</p></a>
+            </div>
+            <div class="col-md-3">
+                <i class="fa fa-home"></i>
+                <a href="/"> <p>Go back to home</p></a>
+            </div>
+            <div class="col-md-3">
+                <i class="fa fa-university"></i>
+                <a href="/"> <p> Bank</p></a>
+            </div>
+            <div class="col-md-3">
+                <i class="fa fa-android"></i>
+                <a href="/bot">  <p> Talk to AIDEM?</p></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

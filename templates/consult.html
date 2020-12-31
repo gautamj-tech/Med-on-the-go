@@ -1,0 +1,320 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Consult With Doctor |
+{% endblock title %}
+
+{% block style1 %}
+<link rel="stylesheet" type="text/css" href="{% static '/consult.css' %}">
+<script type="text/javascript">
+
+  function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+
+function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Show more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Show less"; 
+    moreText.style.display = "inline";
+  }
+}
+  
+var ButtonExpand = function (domNode) {
+
+  this.domNode = domNode;
+
+  this.keyCode = Object.freeze({
+    'RETURN': 13
+  });
+};
+
+ButtonExpand.prototype.init = function () {
+
+  this.controlledNode = false;
+
+  var id = this.domNode.getAttribute('aria-controls');
+
+  if (id) {
+    this.controlledNode = document.getElementById(id);
+  }
+
+  this.domNode.setAttribute('aria-expanded', 'false');
+  this.hideContent();
+
+  this.domNode.addEventListener('keydown',    this.handleKeydown.bind(this));
+  this.domNode.addEventListener('click',      this.handleClick.bind(this));
+  this.domNode.addEventListener('focus',      this.handleFocus.bind(this));
+  this.domNode.addEventListener('blur',       this.handleBlur.bind(this));
+
+};
+
+ButtonExpand.prototype.showContent = function () {
+
+  if (this.controlledNode) {
+    this.controlledNode.style.display = 'block';
+  }
+
+};
+
+ButtonExpand.prototype.hideContent = function () {
+
+  if (this.controlledNode) {
+    this.controlledNode.style.display = 'none';
+  }
+
+};
+
+ButtonExpand.prototype.toggleExpand = function () {
+
+  if (this.domNode.getAttribute('aria-expanded') === 'true') {
+    this.domNode.setAttribute('aria-expanded', 'false');
+    this.hideContent();
+  }
+  else {
+    this.domNode.setAttribute('aria-expanded', 'true');
+    this.showContent();
+  }
+
+};
+
+/* EVENT HANDLERS */
+
+ButtonExpand.prototype.handleKeydown = function (event) {
+
+  console.log('[keydown]');
+
+  switch (event.keyCode) {
+
+    case this.keyCode.RETURN:
+
+      this.toggleExpand();
+
+      event.stopPropagation();
+      event.preventDefault();
+      break;
+
+    default:
+      break;
+  }
+
+};
+
+ButtonExpand.prototype.handleClick = function (event) {
+  this.toggleExpand();
+};
+
+ButtonExpand.prototype.handleFocus = function (event) {
+  this.domNode.classList.add('focus');
+};
+
+ButtonExpand.prototype.handleBlur = function (event) {
+  this.domNode.classList.remove('focus');
+};
+
+/* Initialize Hide/Show Buttons */
+
+window.addEventListener('load', function (event) {
+
+  var buttons =  document.querySelectorAll('button[aria-expanded][aria-controls]');
+
+  for (var i = 0; i < buttons.length; i++) {
+    var be = new ButtonExpand(buttons[i]);
+    be.init();
+  }
+
+}, false);
+</script>
+{% endblock style1 %}
+
+
+{% block body1 %}
+
+
+<div class="form-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h3><u>My Wallet</u><br> Balance: &#x20B9; 20</h3>
+
+    
+    <button type="submit" class="btn">Recharge</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+
+	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img style="height:500px" class="d-block w-100" src="{% static 'img/onlinedoc.jpg' %}" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img style="height:500px" class="d-block w-100" src="{% static 'img/onlinedoc4.jpg' %}" alt="Second slide">
+    </div>
+  
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<br>
+
+<center>
+<h1><b><u>Consult with doctor</u></b> </h1>
+<br>
+<form action="/action_page.php">
+ <textarea placeholder="Enter your symptoms here!" style="width:400px; height:50px;outline-color: black;" id="w3review" name="w3review" rows="4" cols="50"></textarea>
+</form>
+<button type="button" class="btn btn-primary btn-lg">Upload symptoms</button>
+<br>
+<button class="buttonwa" class="open-button" onclick="openForm()" style="vertical-align:middle"><span>My Wallet</span></button>
+<br>
+<button type="button" class="btn btn-secondary btn-lg">Consult Now!</button>
+</center>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+<p>
+<div class="container">
+  <h2><u>Chat with our specialist doctors!</u></h2>
+<br>
+  <div class="row">
+  <div class="col-lg-3 col-md-6 col-sm-12">
+    <img src="{% static 'img/derm.jpg' %}" alt="Snow" style="width:100%; height:250px">
+    <a href="#" class="bottom-left"><center><b>Dermatologist</b></center></a>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-12">
+    <img src="{% static 'img/onco.jpg' %}" alt="Forest" style="width:100%; height:250px">
+    <a href="#" class="bottom-left"><center><b>Oncologist</b></center></a>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-12">
+    <img src="{% static 'img/opth.jpg' %}" alt="Mountains" style="width:100%; height:250px">
+    <a href="#" class="bottom-left"><center><b>Opthalmologist</b></center></a>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-12">
+    <img src="{% static 'img/card.jpg' %}" alt="Mountains" style="width:100%; height:250px">
+    <a href="#" class="bottom-left"><center><b>Cardiologist</b></center></a>
+  </div>
+</div><span id="dots"></span><span id="more"><div class="row">
+  <div class="col-lg-3 col-md-6 col-sm-12">
+    <img src="{% static 'img/alle.jpg' %}" alt="Snow" style="width:100%; height:250px">
+    <a href="#" class="bottom-left"><center><b>Allergist</b></center></a>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-12">
+    <img src="{% static 'img/phy.jpg' %}" alt="Forest" style="width:100%; height:250px">
+    <a href="#" class="bottom-left"><center><b>General Physician</b></center></a>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-12">
+    <img src="{% static 'img/neuro.jpg' %}" alt="Mountains" style="width:100%; height:250px">
+    <a href="#" class="bottom-left"><center><b>Neurologist</b></center></a>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-12">
+    <img src="{% static 'img/gyn.jpg' %}" alt="Mountains" style="width:100%; height:250px">
+    <a href="#" class="bottom-left"><center><b>Gynecologist</b></center></a>
+  </div>
+   <div class="col-lg-3 col-md-6 col-sm-12">
+    <img src="{% static 'img/plas.jpg' %}" alt="Mountains" style="width:100%; height:250px">
+    <a href="#" class="bottom-left"><center><b>Plastic Surgeons</b></center></a>
+  </div>
+   <div class="col-lg-3 col-md-6 col-sm-12">
+    <img src="{% static 'img/psy.jpg' %}" alt="Mountains" style="width:100%; height:250px">
+    <a href="#" class="bottom-left"><center><b>Psychiatrist</b></center></a>
+  </div>
+   <div class="col-lg-3 col-md-6 col-sm-12">
+    <img src="{% static 'img/ortho.jpg' %}" alt="Mountains" style="width:100%; height:250px">
+    <a href="#" class="bottom-left"><center><b>Orthologist</b></center></a>
+  </div>
+   <div class="col-lg-3 col-md-6 col-sm-12">
+    <img src="{% static 'img/dia.jpg' %}" alt="Mountains" style="width:100%; height:250px">
+    <a href="#" class="bottom-left"><center><b>Diabetologist</b></center></a>
+  </div>
+
+</div></span></p>
+<button onclick="myFunction()" id="myBtn">Show more...</button>
+
+  
+</div>
+<br>
+<br>
+<br>
+
+
+<br>
+<div class="container">
+  <h2><u>Frequently asked Questions!</u></h2>
+
+  <dl class="faq">
+    <dt>
+      <button aria-expanded="false" aria-controls="faq1_desc">
+        &#8226 Who is a General Physician?
+      </button>
+    </dt>
+    <dd>
+      <p id="faq1_desc" class="desc">
+        
+            A General Physician is a medical specialist who diagnoses common illnesses (such as common cold, flu, and Bronchitis) and gives treatment and advice accordingly. Chat with a general physician today on DMEZ Healthcare to clear your doubts about any health problems.
+          
+      </p>
+    </dd>
+    <dt>
+      <button aria-expanded="false" aria-controls="faq2_desc">
+        &#8226 What are the common symptoms for which I can consult a General Physician online?
+      </button>
+    </dt>
+    <dd>
+      <p id="faq2_desc" class="desc">
+        Fever, abdominal pain, eye infection, cold and cough are some of the issues that one could get treated by a General Physician. If you are experiencing any of these symptoms you must connect with a doctor at the earliest. You can use the online doctor consultation feature of DMEZ Healthcare.
+          
+      </p>
+    </dd>
+    <dt>
+      <button aria-expanded="false" aria-controls="faq3_desc">
+       &#8226 I am not facing any health issues? Can I talk to a doctor online for a general health query?
+      </button>
+    </dt>
+    <dd>
+      <p id="faq3_desc" class="desc">
+        
+            Yes! It is, in fact, advisable to get routine health check-ups done. By getting these check-ups, screenings, and treatments done regularly, you are taking steps towards a longer and healthier life. So chat with an online doctor anytime on DMEZ Healthcare.
+      </p>
+    </dd>
+    <dt>
+      <button aria-expanded="false" aria-controls="faq4_desc">
+       &#8226  Is there a time limit for my consultation? Does the doctor provide sufficient time to understand my health problem?
+      </button>
+    </dt>
+    <dd>
+      <p id="faq4_desc" class="desc">
+        
+           Our online doctors are trained to provide you with sufficient time so that they can understand your problems in detail and then provide you with a personalised treatment plan. Don't worry, all your health-related queries will be heard patiently and our doctors will provide you with sufficient time.
+          
+      </p>
+    </dd>
+  </dl>
+  
+</div>
+  
+{% endblock body1 %}

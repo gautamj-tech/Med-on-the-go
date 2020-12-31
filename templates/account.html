@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Signup | Login 
+{% endblock title %}
+
+{% block style1 %}
+<link rel="stylesheet" type="text/css" href="{% static '/styles.css' %}">
+{% endblock style1 %}
+
+
+{% block body1 %}
+	{% csrf_token %}
+
+<!--<form class="site-form" action="/" method="POST">-->
+<div class="account-page">
+	<div class="container">
+		<div class="row">
+			<div class="col-2">
+				<img src="{% static 'images/m6.png' %}" width="110%"><br><br><br>
+			</div>
+
+	
+
+			<div class="col-2">
+				<div class="form-container">
+					<div class="form-btn">
+						<span  onclick="login()">Login</span>
+						<span onclick="register()">Register</span>
+						<hr id="indicator">
+					</div>
+					<form id="loginform" action="/login/" method="post">
+						{% csrf_token %}
+						<input type="text" placeholder="Username" name="username">
+						<input type="password" placeholder="Password" name="password">
+						<button type="submit" id="btn2" >Login</button>
+						<a href="" style="color: #000;">Forget Password</a>
+					</form>
+					<form id="regform" style="margin-top: -40px;" action="/signup/" method="post">
+					{% csrf_token %}
+						<input type="text" placeholder="Username" name="username">
+						<input type="email" placeholder="Email" name="email">
+						<input type="password" placeholder="Password" name="password1">
+						<input type="password" placeholder="Confirm Password" name="password11">
+						<button type="submit" id="btn2">Register</button>
+						<div>
+							{% for message in messages %}
+							<h6>{{message}}</h6>
+							{% endfor %}
+						</div>
+						
+					</form>
+					
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+</div>
+<script>
+	var loginform = document.getElementById("loginform");
+	var regform = document.getElementById("regform");
+	var indicator = document.getElementById("indicator");
+
+	function register(){
+		regform.style.transform = "translateX(0px)";
+		loginform.style.transform = "translateX(0px)";
+		indicator.style.transform = "translateX(100px)";
+	}
+
+	function login(){
+			regform.style.transform = "translateX(300px)";
+			loginform.style.transform = "translateX(300px)";
+			indicator.style.transform = "translateX(0px)";
+		}
+
+</script>
+
+{% endblock body1 %}
