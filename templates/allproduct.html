@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-All Products
+All Products 
 {% endblock title %}
 
 {% block style1 %}
@@ -23,22 +23,26 @@ All Products
         {% for product in products %}
         <div class="col-lg-4"><br>
             <img class="thumbnail" src="{{product.imageURL}}">
-            <div class="box-element product">
-                <h6><strong>{{product.name}}</strong></h6>
+            <div class="container">
+
+            <div class="box-element product mt-3">
+                <h5><strong>{{product.name}}</strong></h5>
                 <p>{{product.desc|slice:"0:63"}}...</p>
                 <hr>
 
-                <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                
+                <h4 style="display: inline-block; "><del>MRP : Rs {{product.mrp_price}}</del></h4>
+                <h4 style="display: inline-block; float: right;"><strong>Rs {{product.price}}</strong></h4>
+                <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart mt-2">Add to Cart</button>
+                
+                <a style="display: inline-block; float: right;" class="btn btn-outline-success mt-2" href="/products/{{product.id}}">View</a><br>
 
-                <a class="btn btn-outline-success" href="/products/{{product.id}}">View</a>
-                <h4 style="display: inline-block; float: right"><strong>Rs.{{product.price}}</strong></h4><h4><strike>MRP Rs.{{product.mrp_price}}</strike></h4>
-
-
+            </div>                
             </div>
         </div>
         {% endfor %}
     </div>
-
+    
 </div>
 
 
