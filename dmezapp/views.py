@@ -199,20 +199,50 @@ def covid(request, myid):
 	covids = Covid.objects.filter(id=myid)
 	return render(request,'covid.html', {'covids':covids[0]})
 
+
 def about(request):
-	return render(request,'about.html')
+	data = cartData(request)
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	context = {'cartItems':cartItems}
+	return render(request,'about.html', context)
 
 def contact(request):
-	return render(request,'contact.html')
+	data = cartData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	context = {'cartItems':cartItems}
+	return render(request,'contact.html', context)
 
 def testing(request):
-	return render(request,'testing.html')
+	data = cartData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	context = {'cartItems':cartItems}
+	return render(request,'testing.html', context)
 
 def join(request):
-	return render(request,'join.html')
+	data = cartData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	context = {'cartItems':cartItems}
+	return render(request,'join.html', context)
 
 def upload(request):
-	return render(request,'upload.html')
+	data = cartData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	context = {'cartItems':cartItems}
+	return render(request,'upload.html', context)
 
 def top(request):
 	data = cartData(request)
@@ -242,19 +272,34 @@ def bestselling(request):
 	context = {'products':products, 'cartItems':cartItems}
 	return render(request,'bestsellingproduct.html', context)
 
-
 def account(request):
-	return render(request,'account.html')
+	data = cartData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	context = {'cartItems':cartItems}
+	return render(request,'account.html', context)
+
 
 def consult(request):
-	return render(request,'consult.html')
+	data = cartData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	context = {'cartItems':cartItems}
+	return render(request,'consult.html', context)
+
 
 def tracker(request):
-	return render(request, 'tracker.html')
+	data = cartData(request)
 
-
-
-
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	context = {'cartItems':cartItems}
+	return render(request,'tracker.html', context)
 ########################Account Section#############################
 
 def signup(request):
@@ -325,6 +370,12 @@ def email(request):
         recieved = "No message entered!!!"
         return render(request,"contacts.html",{'recieved':recieved})
 
-
 def wallet(request):
-    return render(request,"wallet.html")
+	data = cartData(request)
+
+	cartItems = data['cartItems']
+	order = data['order']
+	items = data['items']
+	context = {'cartItems':cartItems}
+	return render(request,'wallet.html', context)
+
